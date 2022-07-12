@@ -1,0 +1,58 @@
+#Prime factorisation of a natural number by Sayantan Biswas. It gives the prime factorisation of a number
+def prime_check(a):
+    if a ==1:
+        return False #non prime
+    else:
+        for j in range(2,a+1):
+            if a%j==0:
+                break
+
+        if j<a:
+         return False #non prime 
+        else:
+         return True #prime
+
+
+
+def NumCheck(a,i):
+    if i ==0:
+            num =1
+    else:
+            for j in range(i):
+                num =1
+                if a[i]==a[j]:
+                    num =0
+                    break
+    return num       
+    
+
+
+n=int(input("Enter a natural number: "))
+if n !=1:
+ prime =[]
+ print("The prime factorisation of ",n," is: ",end=" ")
+ while n!=1:
+     for i in range(2,n+1):
+         if prime_check(i)==True and n%i==0:
+             prime.append(i)
+             break
+     n=int(n/i)
+ 
+ 
+ print(prime)    
+ 
+ print("\nThe occurance of each prime numbers is given below:\n")
+ 
+ #counting of prime numbers
+ 
+ for i in range(len(prime)):
+     for j in range(len(prime)):
+         if NumCheck(prime,i) !=0:
+            print("\n",prime[i],"is repeated",prime.count(prime[i]),"times")
+            break
+
+elif n ==1:
+    print("prime factorisation of 1 is not possible")
+
+else:
+    print("Invalid Input")
