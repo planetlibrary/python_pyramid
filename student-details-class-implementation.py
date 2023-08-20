@@ -1,3 +1,14 @@
+'''
+Question: Use Python Class and Objects to display student details
+
+1. Read 4 different students detail like Name, Reg.no, Phy_mark, Che_mark, Mat_mark, Bio_mark, gender from the user
+
+2. Use Constructor to initialize values to class members.
+
+3. Find Average_mark of each student and print topper among five students.
+'''
+
+
 # Define a class named StudentDetails
 class StudentDetails:
     # Class-level dictionary to store registration numbers and their average marks
