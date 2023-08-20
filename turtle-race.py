@@ -1,64 +1,85 @@
-import turtle as t
+# Required modules
+from turtle import *
 from random import randint
 
-class TurtleRace:
-    def __init__(self):
-        self.setup_track()
-        self.setup_players()
+# Set up the turtle graphics environment
+speed(0)  # Set the maximum drawing speed
+penup()
+goto(-140, 140)  # Position the pen for labeling the racing track
 
-    def setup_track(self):
-        t.bgcolor("white")
-        t.speed(0)
-        t.penup()
-        t.goto(-140, 140)
-        for step in range(15):
-            self.write(step)
-            t.right(90)
-            for num in range(8):
-                t.penup()
-                t.forward(10)
-                t.pendown()
-                t.forward(10)
-            t.penup()
-            t.backward(160)
-            t.left(90)
-            t.forward(20)
+# Draw the racing track with labels
+for step in range(15):
+    write(step, align='center')
+    right(90)
+    for num in range(8):
+        penup()
+        forward(10)
+        pendown()
+        forward(10)
+    penup()
+    backward(160)
+    left(90)
+    forward(20)
 
-    def setup_players(self):
-        self.players = []
-        player_data = [
-            ("red", 100, 36),
-            ("blue", 70, 5),
-            ("green", 40, 6),
-            ("orange", 10, -12)
-        ]
-        for color, start_y, angle in player_data:
-            player = self.setup_player(color, start_y, angle)
-            self.players.append(player)
+# Create the first player's turtle
+player_1 = Turtle()
+player_1.color('red')
+player_1.shape('turtle')
 
-    def setup_player(self, player_color, start_y, angle):
-        player = t.Turtle()
-        player.color(player_color)
-        player.shape("turtle")
-        player.penup()
-        player.goto(-160, start_y)
-        player.pendown()
-        for turn in range(10):
-            player.right(angle)
-        return player
+# Position the first player's turtle at the starting line
+player_1.penup()
+player_1.goto(-160, 100)
+player_1.pendown()
 
-    def run_race(self):
-        for turn in range(100):
-            for player in self.players:
-                player.forward(randint(1, 5))
+# Make the first player's turtle turn 360 degrees
+for turn in range(10):
+    player_1.right(36)
 
-    def write(self, step):
-        t.penup()
-        t.forward(10)
-        t.write(step, align='center')
-        t.backward(10)
+# Create the second player's turtle
+player_2 = Turtle()
+player_2.color('blue')
+player_2.shape('turtle')
 
-if __name__ == "__main__":
-    race = TurtleRace()
-    race.run_race()
-    t.done()
+# Position the second player's turtle at the starting line
+player_2.penup()
+player_2.goto(-160, 70)
+player_2.pendown()
+
+# Make the second player's turtle turn 360 degrees
+for turn in range(72):
+    player_2.left(5)
+
+# Create the third player's turtle
+player_3 = Turtle()
+player_3.shape('turtle')
+player_3.color('green')
+
+# Position the third player's turtle at the starting line
+player_3.penup()
+player_3.goto(-160, 40)
+player_3.pendown()
+
+# Make the third player's turtle turn 360 degrees
+for turn in range(60):
+    player_3.right(6)
+
+# Create the fourth player's turtle
+player_4 = Turtle()
+player_4.shape('turtle')
+player_4.color('orange')
+
+# Position the fourth player's turtle at the starting line
+player_4.penup()
+player_4.goto(-160, 10)
+player_4.pendown()
+
+# Make the fourth player's turtle turn 360 degrees
+for turn in range(30):
+    player_4.left(12)
+
+# Make the turtles run at random speeds for a number of turns
+for turn in range(100):
+    player_1.forward(randint(1, 5))
+    player_2.forward(randint(1, 5))
+    player_3.forward(randint(1, 5))
+    player_4.forward(randint(1, 5))
